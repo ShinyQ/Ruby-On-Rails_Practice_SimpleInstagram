@@ -1,0 +1,6 @@
+<p>Posts</p>
+<% @posts.each do |p| %>
+  <%= p.username %><br>
+  <%= p.message %><br>
+  <%= p.created_at.strftime('%FT%T') %><br><br>
+<% end %>
