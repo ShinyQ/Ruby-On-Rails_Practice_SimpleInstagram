@@ -5,9 +5,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -24,12 +21,27 @@
             <li class="nav-item">
               <a class="nav-link" href="<%= posts_url %>">Posts</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= new_post_url %>">Add Post</a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
 
     <div class="container">
+      <% if flash[:notice].present? %>
+        <div class="alert alert-info">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <% if flash[:alert].present? %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>
